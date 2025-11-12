@@ -1,0 +1,19 @@
+name: freshrss
+services:
+  freshrss:
+    image: freshrss/freshrss:latest
+    container_name: freshrss
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    environment:
+      - CRON_MIN=*/5
+      - CRON_HOUR=*
+      - CRON_DAY=*
+      - CRON_MONTH=*
+      - CRON_WEEKDAY=*
+      - TZ=Europe/Brussels
+    volumes:
+      - ./data:/var/www/FreshRSS/data
+      - ./config:/var/www/FreshRSS/config
+      - ./extensions:/var/www/FreshRSS/extensions
